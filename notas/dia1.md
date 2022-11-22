@@ -26,9 +26,9 @@ Conjunto de Servicios (normalmente relacionados con el mundo TIC) que una empres
 - Los servicios se ofrecen de forma automatizada y desatendida. No hay ninguna persona detrás.
 
 Clouds importantes:
-1º AWS                      Amazon
-2º Azure                    Microsoft
-3º Google Cloud Platform    Google
+    1º AWS                      Amazon
+    2º Azure                    Microsoft
+    3º Google Cloud Platform    Google
 
 Los servicios que ofrecen los clouds, los dividimos en 3 grandes tipos:
 - Infraestructura   (almacenaminto, cómputo, comunicaciones)                -   IaaS
@@ -112,7 +112,7 @@ OPERATION
 
 Aquí falta una cosa por automatizar... cuál?
 Quién llama a todos esos programas? YO? dandole ahí al play?
-    Servidor de autoamtización: Jenkins, AzureDevops, TravisCI, Bamboo, TeamCity, Gitlab CI/CD, Github actions
+    Servidor de automatización: Jenkins, AzureDevops, TravisCI, Bamboo, TeamCity, Gitlab CI/CD, Github actions
 
     Ésta es una herramienta nueva, que antes no hacía falta. Quién la configura?    Al devops!
         Requiere conocer todas esas herramientas. No las voy a configurar
@@ -182,6 +182,7 @@ Esos ficheros se escriben con lenguaje HCL, que en apariencia (sintaxis) es una 
 Hay unos cuantos bloques (palabras importantes) que son los que vamos a utilizar en estos ficheros:
 - terraform         Martes
 - provider          Martes
+- resource          Martes
 - output            Martes
 - variable          Martes, Miercoles   *** ES LO MAS COMPLEJO DE TERRAFORM CON MUCHA DIFERENCIA !
 - ---------- ^ No vamos a tocar ni un cloud
