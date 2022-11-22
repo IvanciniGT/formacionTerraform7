@@ -33,7 +33,7 @@ resource "docker_container" "miapache" {
 
 # Quiero tener descargada esta imagen de contenedor 
 resource "docker_image" "miapache" {
-  name      = "apache:latest"
+  name      = "httpd:latest"
 }
 # NOTA: Al crear un recurso, tenemos a nuestra diosposicion una variable llamada:
 #.      TIPO_RECURSO.id_interno...... que contiene esa variable? Un objeto de tipo TIPO_RECURSO
