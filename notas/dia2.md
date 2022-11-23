@@ -8,6 +8,7 @@
                                     Solo puedo acceder a ellos por ITERACION
 - Map()             Conjunto de pares clave-valor. Las claves serán siempre Strings... los valores.. lo que se requiera
 - Objets            Es un mapa con claves predefinidas
+                    Asociado a cada clave, puedo tener un tipo de datos distinto
 
 # Tipos de propiedades que puedo asignar a un recurso de terraform:
 
