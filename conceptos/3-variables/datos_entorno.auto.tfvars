@@ -21,7 +21,7 @@ imagen_repo                     = "httpd"
 imagen_tag                      = "latest"
 puertos_expuestos               = [
                                         {
-                                            interno =   80
+                                            interno =   80000
                                             externo =   8081
                                         },
                                         {

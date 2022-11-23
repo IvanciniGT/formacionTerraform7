@@ -44,4 +44,12 @@ variable "puertos_expuestos" {
                                         interno = number
                                         externo = number
                                   }))
+    validation {
+        condition       = alltrue ( [ for puerto in var.puertos_expuestos: puerto.interno < 65000 ] )
+        error_message   = "El puerto interno debe ser menor de 65000"
+    }
+    validation {
+        condition       = alltrue ( [ for puerto in var.puertos_expuestos: puerto.externo < 65000 ] )
+        error_message   = "El puerto externo debe ser menor de 65000"
+    }
 }
