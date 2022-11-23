@@ -186,6 +186,7 @@ Hay unos cuantos bloques (palabras importantes) que son los que vamos a utilizar
 - output            Martes
 - variable          Martes, Miercoles   *** ES LO MAS COMPLEJO DE TERRAFORM CON MUCHA DIFERENCIA !
 - ---------- ^ No vamos a tocar ni un cloud
+-       resources > provisioners = provisionadores
 - ---------- v Empezaremos a jugar con clouds
 - locals            JUEVES
 - module            JUEVES , VIERNES    *** ESTO ES LO MAS IMPORTANTE DE TERRAFORM 
