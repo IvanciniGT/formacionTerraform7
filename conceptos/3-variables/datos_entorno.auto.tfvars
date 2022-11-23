@@ -1,4 +1,4 @@
-cuota_de_cpu                    = 4096
+cuota_de_cpu                    = null
 nombre_contenedor               = "miapache"
 variables_entorno_contenedor    = [
                                         {
@@ -21,12 +21,13 @@ imagen_repo                     = "httpd"
 imagen_tag                      = "latest"
 puertos_expuestos               = [
                                         {
-                                            interno =   80000
-                                            externo =   8081
+                                            interno =   80
+                                            externo =   8080
+                                            ip      =   "127.0.0.1"
                                         },
                                         {
                                             interno =   443
-                                            externo =  8444
+                                            externo =  8443
                                         }
                                   ]
                                   

@@ -8,18 +8,23 @@ variable "nombre_contenedor" {
 }
 variable "cuota_de_cpu" {
     type            = number
+    nullable        = true # false, por defecto
+                        # Esto hace que la variable pueda recibir además de un numero
+                        # el valor nulo
     description     = "Cuota para la CPU del contenedor"
     #default         = 1024 # ESTO NO SE HACE NUNCA EN LOS SCRIPTS !
                             # 1º Estos archivos son jodidos ... muy jodidos
                             # 2º Porque hay un sitio mejor !
     validation {
                           # Expresion que devuelva true si el dato es OK
-        condition       = var.cuota_de_cpu > 0 # > < == != <= >= && ||
+        condition       = var.cuota_de_cpu == null ? true : var.cuota_de_cpu > 0 # > < == != <= >= && ||
+                        # Condicional: Mediante el operador ternario
+                        #       CONDICION ? VALOR_SI_TRUE : VALOR_SI_FALSE
         error_message   = "La cuota de CPU debe ser mayor que 0"# Que se muestra si no se cumple la valdiacion
     }
     validation {
                           # Expresion que devuelva true si el dato es OK
-        condition       = var.cuota_de_cpu <= 4096 # > < == != <= >= && ||
+        condition       = var.cuota_de_cpu == null ? true : var.cuota_de_cpu <= 4096 # > < == != <= >= && ||
         error_message   = "La cuota de CPU debe ser menor o igual que 4096"# Que se muestra si no se cumple la valdiacion
     }
 }
@@ -43,6 +48,12 @@ variable "puertos_expuestos" {
     type            = list(object({
                                         interno = number
                                         externo = number
+                                        ip      = optional(string, "0.0.0.0") # optional(string) equivalente a escribir optional(string, null) 
+                                                 # Nos permite definir propiedades no obligatorias.
+                                                 # CUIDADO. Que siempre un dato tiene que tener valor en terraform
+                                                 # Y esta función lo que hace es, si no se da el dato, meter un
+                                                 # valor por defecto, que se puede suministrar como segundo argumento
+                                                 # En caso de no suministrarse, se usa por defecto el valor null
                                   }))
     validation {
         condition       = alltrue ( [ for puerto in var.puertos_expuestos: puerto.interno < 65000 ] )
@@ -52,4 +63,13 @@ variable "puertos_expuestos" {
         condition       = alltrue ( [ for puerto in var.puertos_expuestos: puerto.externo < 65000 ] )
         error_message   = "El puerto externo debe ser menor de 65000"
     }
+    validation {
+        condition       = alltrue ( 
+                                    [ for puerto in var.puertos_expuestos: 
+                                        length(regexall("^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.){3}(25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)$", puerto.ip))==1
+                                    ] 
+                                  )
+        error_message   = "La IP no es correcta"
+    }
+    
 }
