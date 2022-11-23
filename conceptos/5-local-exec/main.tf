@@ -11,12 +11,13 @@ provider "docker" {
 
 
 resource "docker_container" "miapache" {
-  name        = "miapache"
+  count       = 5
+  name        = "miapache_${count.index}"
   image       = docker_image.miapache.image_id
   
   ports {
     internal  = 80
-    external  = 8080
+    external  = 8080+count.index
   }
   # Smoke test = Prueba de humo
   provisioner "local-exec" {
@@ -32,7 +33,7 @@ resource "docker_container" "miapache" {
   }
   # Generar un fichero de inventario de ansible
   provisioner "local-exec" {
-    command = "echo ${self.name}=${self.network_data[0].ip_address} > inventario.ini"
+    command = "echo ${self.name}=${self.network_data[0].ip_address} >> inventario.ini"
     # self en este caso es = docker_container.miapache
   }
 }
