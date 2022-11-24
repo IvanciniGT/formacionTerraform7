@@ -61,3 +61,36 @@ Un modulo de terraform, es un conjunto de variables, recursos, outputs y proveed
 que podemos reutilizar.
 
 Un script de terraform, es un conjunto de variables, recursos, outputs y proveedores (con su configuración)
+
+
+--- Ivan
+Tiene su:
+Clave publica   -> En el servidor al que quiero conectarme
+Clave privada   -> En mi maquina desde la que quiero conectarme
+
+ssh
+
+----
+Quieres un modulo de terraform
+Permitirme usar claves ssh: Publicas / privadas
+
+- Puede ser que yo tenga claves ya pregeneradas... Las tendre en unos ficheros. Quiero que se me lean
+- Puede ser que no tenga... en cuyo caso ... quiero que se me generen unas y se me dejen en unos ficheros
+
+
+module "misclaves" {
+    algoritmo   = "rsa"
+    config  = "4096" < Van en función del algoritmo
+    force_recreate  = true 
+    file_destination    = "./claves"
+                                    publicKey.pem
+                                    privateKey.pem
+
+                                    publicKey.openssh
+                                    privateKey.openssh
+
+}
+
+Si al llamar al módulo, las claves existen, pero hay una variable force_recreate en true, se pasa de las que existen y se generan claves nuevas
+Si al llamar al módulo, las claves existen, se leen... y temndré unas variables que me permitan acceder a su contendido
+Si al llamar al modulo no existen, se crean, se guardan y tendré unas variables que me permitan acceder a su contenido
