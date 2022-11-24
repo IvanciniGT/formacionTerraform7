@@ -82,7 +82,12 @@ module "misclaves" {
     algoritmo   = "rsa"
     config  = "4096" < Van en función del algoritmo
     force_recreate  = true 
+    
     file_destination    = "./claves"
+    file_destination    = "./claves/"
+    file_destination    = "/claves"
+    file_destination    = "/claves/"
+    
                                     publicKey.pem
                                     privateKey.pem
 
