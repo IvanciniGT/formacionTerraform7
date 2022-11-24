@@ -32,3 +32,32 @@ Dios quiera que le toque la IP.... Y entonces si...
 Ya me toca montar un script guay que busque el que edito y 
     lo elimine y luego de uno de alta nuevos
 
+## Cuando escribimos un programa .....
+
+Qué hacemos con el código... 
+- LO ENCAPSULAMOS
+- LO ORGANIZAMOS
+
+Voy a tener un montón de lineas por ahi en mi programa una detrás de otra?     Programación IMPERATIVA
+    Hace programas complejos
+    No permite reutilizar código
+    No encapsula
+    Dificil de testear y debugear
+
+Funciones / Procedimientos / Métodos / Rutinas / Modulos (en terraform)
+
+Un módulo de terraform es el quivalente en otros lenguajes a una función.
+Sirve para: 
+    Reutilización
+    Encapsulación
+
+Las funciones:
+1º Las tengo que definir
+2º Las tengo que invocar/llamar... Y al llamarlas:
+    - Les paso parametros/argumentos/variables(terraform)
+    - Y al acabar me devuelven un/unos datos: return / output(terraform)
+    
+Un modulo de terraform, es un conjunto de variables, recursos, outputs y proveedores (sin su configuración)
+que podemos reutilizar.
+
+Un script de terraform, es un conjunto de variables, recursos, outputs y proveedores (con su configuración)
