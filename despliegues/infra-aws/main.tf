@@ -6,6 +6,24 @@ resource "aws_instance" "foo" {
     tags = {
         Name = "InstanciaDeIvan"  
     }
+    
+    // public_ip private_ip     Ping:       Pruebo que la maquina está on y conectada a red
+    // conectar por ssh ...     Probamos:   El certificado o Puerto 
+    //                          SI: Se que todo está bien
+    //                          NO: No se qué pasa ¿?
+    //                          Pruebas unitarias
+    
+    provisioner "local-exec" {
+    
+    
+    connection {
+        
+    }
+    
+    provisioner "remote-exec" {
+        
+    }
+    
 }
 
 module "claves" {
