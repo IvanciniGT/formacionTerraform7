@@ -1,7 +1,7 @@
 variable "algoritmo"{
     type            =   object({
-                            nombre          =   String
-                            configuracion   =   optional(String, null)
+                            nombre          =   string
+                            configuracion   =   optional(string, null)
                         })
     description     =   "Algoritmo a utilizar para la generación de las claves publica y privada"
     default         =   {
@@ -42,17 +42,17 @@ variable "algoritmo"{
 }
 
 variable "directorio_claves" {
-    type                =   String
+    type                =   string
     description         =   "Directorio donde almacenar/leer los ficheros de las claves"
     default             =   "."
     validation  {
-        condition       =   length(regexall("^(([.]{1,2}[\\/])|[\\/])?([a-zA-Z0-9_-]+[\\/]?)+$", var.directorio_claves )) == 1
+        condition       =   length(regexall("^((([.]{1,2}[\\/])|[\\/])?([a-zA-Z0-9_-]+[\\/]?))|[.]+$", var.directorio_claves )) == 1
         error_message   =   "Directo no válido"
     }
 }
 
 variable "forzar_recreacion"{
-    type        =   Bool
+    type        =   bool
     description =   "Recrear las claves aunque existan previamente"
     default     =   false
 }
